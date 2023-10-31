@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Card from "./componentes/Card";
 
 function App() {
+  const [estado, setEstado] = React.useState(0);
+  const [mensagem, setMensagem] = React.useState("Seu carrinho está vazio");
+
+  const funcaoApp = () => {
+    setEstado(estado + 1);
+  };
+
+  React.useEffect(() => {
+    if (estado > 0) {
+      setMensagem("Seu carrinho tem coisa " + estado);
+    }
+  }, [estado]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>Quantidade de clicks: {estado}</div>
+      <div>{mensagem}</div>
+      <Card preco={"R$100,00"} onClickProps={funcaoApp} />
+      <Card titulo={"Card2"} preco={"R$200,00"} onClickProps={funcaoApp} />
     </div>
   );
 }

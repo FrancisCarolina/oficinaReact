@@ -1,0 +1,12 @@
+.containerCard {
+  border: 1px solid #bababa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: max-content;
+  border-radius: 4px;
+}
+.imagemCard {
+  width: 200px;
+}
